@@ -81,15 +81,17 @@ jobs:
         with:
           name: artifact
           path: target/lab1v20206.jar
-      - name: Build & push Docker image
-        uses: mr-smithers-excellent/docker-build-push@v6
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
-          image: ${{ secrets.DOCKER_USERNAME }}/lab1v20206
-          tags: latest
-          registry: docker.io
-          dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build & push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/lab1v20206:latest
 
   deploy:
     name: Deploy to Render
