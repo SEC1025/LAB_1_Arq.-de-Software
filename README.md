@@ -1,5 +1,9 @@
 [![CI/CD Pipeline](https://github.com/SEC1025/LAB_1_Arq.-de-Software/actions/workflows/build.yml/badge.svg)](https://github.com/SEC1025/LAB_1_Arq.-de-Software/actions/workflows/build.yml)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SEC1025_LAB_1_Arq.-de-Software&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=SEC1025_LAB_1_Arq.-de-Software)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SEC1025_LAB_1_Arq.-de-Software&metric=coverage)](https://sonarcloud.io/summary/new_code?id=SEC1025_LAB_1_Arq.-de-Software)
+
 [![Known Vulnerabilities](https://snyk.io/test/github/SEC1025/LAB_1_Arq.-de-Software/badge.svg)](https://snyk.io/test/github/SEC1025/LAB_1_Arq.-de-Software)
 
 Backend del Laboratorio 1 (banco) con el pipeline del Laboratorio 2.
@@ -63,5 +67,36 @@ mvnw.cmd -B test
 
 ### Despliegue
 
-La imagen Docker se publica como `DOCKER_USERNAME/lab1v20206:latest`.
-Render usa `render.yaml`. Para la demo, la variable `SPRING_PROFILES_ACTIVE=h2` levanta la app sin MySQL. Si tienes MySQL en la nube, quita ese perfil y define `DB_URL`, `DB_USER` y `DB_PASSWORD`.
+La imagen Docker está en [scg4m3rlol/lab1v20206](https://hub.docker.com/r/scg4m3rlol/lab1v20206).
+La aplicación en la nube responde en [https://lab-1-arq-de-software.onrender.com/health](https://lab-1-arq-de-software.onrender.com/health).
+Render usa el perfil `h2`, así que arranca con una base en memoria.
+
+### Evidencia
+
+Pipeline en verde: pruebas, SonarCloud, construcción de la imagen y despliegue en Render.
+
+![GitHub Actions](docs/evidencias/github-actions.png)
+
+Pull request de `mi-rama` fusionado en `backend`.
+
+![Pull request](docs/evidencias/pull-request.png)
+
+Análisis de SonarCloud.
+
+![SonarCloud](docs/evidencias/sonarcloud.png)
+
+Imagen publicada en Docker Hub.
+
+![Docker Hub](docs/evidencias/docker-hub.png)
+
+Despliegues del servicio en Render.
+
+![Render](docs/evidencias/render-deploy.png)
+
+Respuesta del backend en la nube.
+
+![Health check](docs/evidencias/health.png)
+
+Análisis de Snyk sobre el repositorio. Más detalle en [snyk.io/test/github/SEC1025/LAB_1_Arq.-de-Software](https://snyk.io/test/github/SEC1025/LAB_1_Arq.-de-Software).
+
+![Snyk](docs/evidencias/snyk.png)
